@@ -44,7 +44,14 @@ def game_core_v2(number: int = 1) -> int:
     return count
 
 def game_core_v3(number: int = 1) -> int:
-    """
+    """Сначала случайным образом устанавливаем число в середине данного нам диапазона,
+    то есть 50 или 51, а потом уменьшаем или увеличиваем его в зависимости от того,
+    больше оно или меньше нужного. Величина коррекции начинается с 25 и с
+    каждой новой итерацией уменьшаем её значение вдвое с округлением до целых. По 
+    сути используем метод половинного деления. Если в какой-то момент величина 
+    коррекции доходит до 0, приравниваем её к 1. Таким образом решаем проблему краевого
+    эффекта, который случается, если загадано число 100, а алгоритм начал работу с числа
+    50, или если загадано число 1, а алгоритм начал работу с числа 51.
     Args:
         number (int, optional): Загаданное число. Defaults to 1.
 
@@ -54,17 +61,18 @@ def game_core_v3(number: int = 1) -> int:
     # Ваш код начинается здесь
     count = 0
     predict = np.random.randint(50, 52)
-    predict_corr = 50
+    # Начальная величина коррекции
+    predict_corr = 25
     while number != predict:
         count += 1
-        predict_corr = round(predict_corr/2)
-        if predict_corr == 0:
-            predict_corr = 1
         if number > predict:
             predict += predict_corr
         elif number < predict:
             predict -= predict_corr
-    # print(number, count)
+        # Величина коррекции в следующей итерации
+        predict_corr = round(predict_corr/2)
+        if predict_corr == 0:
+            predict_corr = 1
     return count
     # Ваш код заканчивается здесь
 
