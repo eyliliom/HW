@@ -20,8 +20,6 @@ def random_predict(number:int=1) -> int:
             break # выход из цикла, если угадали
     return count
 
-print(f'Количество попыток: {random_predict()}')
-
 def game_core_v2(number: int = 1) -> int:
     """Сначала устанавливаем любое random число, а потом уменьшаем
     или увеличиваем его в зависимости от того, больше оно или меньше нужного.
@@ -44,6 +42,33 @@ def game_core_v2(number: int = 1) -> int:
             predict -= 1
 
     return count
+
+def game_core_v3(number: int = 1) -> int:
+    """
+    Args:
+        number (int, optional): Загаданное число. Defaults to 1.
+
+    Returns:
+        int: Число попыток
+    """
+    # Ваш код начинается здесь
+    count = 0
+    predict = np.random.randint(50, 52)
+    predict_corr = 50
+    while number != predict:
+        count += 1
+        predict_corr = round(predict_corr/2)
+        if predict_corr == 0:
+            predict_corr = 1
+        if number > predict:
+            predict += predict_corr
+        elif number < predict:
+            predict -= predict_corr
+    # print(number, count)
+    return count
+    # Ваш код заканчивается здесь
+
+# print(f'Количество попыток: {random_predict()}')
 
 def score_game(random_pred) -> int:
     """За какое количество попыток в среднем из 1000 подходов угадывает наш алгоритм
@@ -71,4 +96,5 @@ def score_game(random_pred) -> int:
 if __name__ == '__main__':
     score_game(random_predict)
     score_game(game_core_v2)
+    score_game(game_core_v3)
     
