@@ -58,7 +58,6 @@ def game_core_v3(number: int = 1) -> int:
     Returns:
         int: Число попыток
     """
-    # Ваш код начинается здесь
     count = 0
     predict = np.random.randint(50, 52)
     # Начальная величина коррекции
@@ -74,9 +73,6 @@ def game_core_v3(number: int = 1) -> int:
         if predict_corr == 0:
             predict_corr = 1
     return count
-    # Ваш код заканчивается здесь
-
-# print(f'Количество попыток: {random_predict()}')
 
 def score_game(random_pred) -> int:
     """За какое количество попыток в среднем из 1000 подходов угадывает наш алгоритм
