@@ -23,6 +23,7 @@
 ### Краткая техническая информация
 
 Воспроизводимость: Python 3.11.5, библиотеки - в requirements.txt
+
 Данные доступны на диске: https://drive.google.com/drive/folders/1QtAVPbwNG-tTapD9oB1cLDMFEMuWcmhN?usp=sharing
 
 :arrow_up:[к оглавлению](#Оглавление)
